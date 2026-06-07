@@ -10,8 +10,7 @@ semuanya ditulis manual di PHP tanpa library machine learning:
 - K-Nearest Neighbors (KNN)
 - Decision Tree
 
-Selain hasil prediksi, ditampilkan juga tingkat akurasi tiap algoritma (data dibagi 80% training
-dan 20% testing).
+
 
 ## Kebutuhan
 
