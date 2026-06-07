@@ -21,45 +21,6 @@
         }
         .badge-ya { background-color: #198754; }
         .badge-tidak { background-color: #dc3545; }
-
-        /* ---- Visualisasi ---- */
-        .viz-tab {
-            cursor: pointer;
-            border: 1px solid #dee2e6;
-            background: #fff;
-            padding: .5rem 1rem;
-            border-radius: 8px 8px 0 0;
-            margin-right: 4px;
-            color: #495057;
-            font-weight: 600;
-        }
-        .viz-tab.active { background: #0d6efd; color: #fff; border-color: #0d6efd; }
-
-        /* Decision tree (CSS tree) */
-        .dt-tree-scroll { overflow-x: auto; padding-bottom: .5rem; }
-        .dt-tree ul { position: relative; padding-top: 22px; display: flex; justify-content: center; margin: 0; list-style: none; }
-        .dt-tree li { position: relative; padding: 22px 8px 0 8px; text-align: center; }
-        .dt-tree li::before, .dt-tree li::after {
-            content: ''; position: absolute; top: 0; right: 50%;
-            border-top: 1px solid #ccc; width: 50%; height: 22px;
-        }
-        .dt-tree li::after { right: auto; left: 50%; border-left: 1px solid #ccc; }
-        .dt-tree li:only-child::before, .dt-tree li:only-child::after { display: none; }
-        .dt-tree li:first-child::before, .dt-tree li:last-child::after { border: 0; }
-        .dt-tree li:last-child::before { border-right: 1px solid #ccc; border-radius: 0 6px 0 0; }
-        .dt-tree li:first-child::after { border-radius: 6px 0 0 0; }
-        .dt-tree ul ul::before {
-            content: ''; position: absolute; top: 0; left: 50%;
-            border-left: 1px solid #ccc; height: 22px;
-        }
-        .dt-node {
-            display: inline-block; border: 1px solid #ced4da; background: #fff;
-            padding: 6px 10px; border-radius: 8px; font-size: 13px; white-space: nowrap;
-        }
-        .dt-node.dt-active { box-shadow: 0 0 0 3px rgba(13,110,253,.35); border-color: #0d6efd; }
-        .dt-branch { padding-top: 6px; }
-        .dt-edge { font-size: 11px; color: #adb5bd; }
-        .dt-edge-on { color: #0d6efd; font-weight: 700; }
     </style>
 </head>
 
@@ -225,52 +186,7 @@
 
     </div>
 
-    {{-- visualisasi proses algoritma --}}
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-white border-0 pt-3">
-                    <h5 class="mb-1">Visualisasi Proses Algoritma</h5>
-                    <p class="text-muted small mb-3">
-                        Gambar di bawah memperlihatkan <em>cara kerja</em> tiap algoritma dan ikut berubah
-                        secara langsung saat Anda mengetik di form di atas (tanpa perlu submit).
-                    </p>
-                    <div>
-                        <span class="viz-tab active" data-viz-tab="naive_bayes">Naive Bayes</span>
-                        <span class="viz-tab" data-viz-tab="knn">KNN</span>
-                        <span class="viz-tab" data-viz-tab="decision_tree">Decision Tree</span>
-                    </div>
-                </div>
-                <div class="card-body border-top">
-
-                    <div id="panel-nb">
-                        <div id="viz-nb"></div>
-                    </div>
-
-                    <div id="panel-knn" style="display:none;">
-                        <div class="text-center">
-                            <canvas id="viz-knn-canvas" width="620" height="420"
-                                    style="max-width:100%;border:1px solid #eee;border-radius:8px;"></canvas>
-                        </div>
-                        <p id="viz-knn-info" class="mt-2 mb-0"></p>
-                    </div>
-
-                    <div id="panel-dt" style="display:none;">
-                        <div id="viz-dt"></div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-{{-- data buat visualisasi --}}
-<script>
-    window.DATASET = {!! $dataset->toJson() !!};
-</script>
-<script src="{{ asset('js/visualisasi.js') }}"></script>
 
 {{-- Popup hasil prediksi --}}
 @if (session('prediction'))

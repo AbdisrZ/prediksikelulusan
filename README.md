@@ -11,8 +11,7 @@ semuanya ditulis manual di PHP tanpa library machine learning:
 - Decision Tree
 
 Selain hasil prediksi, ditampilkan juga tingkat akurasi tiap algoritma (data dibagi 80% training
-dan 20% testing). Di bagian bawah halaman ada visualisasi cara kerja masing-masing algoritma
-yang dibuat pakai JavaScript biasa.
+dan 20% testing).
 
 ## Kebutuhan
 

@@ -25,20 +25,10 @@ class ClassificationController extends Controller
     {
         $mahasiswa = Mahasiswa::orderBy('id')->get();
 
-        // data buat visualisasi di sisi JS
-        $dataset = $mahasiswa->map(fn ($m) => [
-            'ipk' => (float) $m->ipk,
-            'kehadiran' => (int) $m->kehadiran,
-            'sks_lulus' => (int) $m->sks_lulus,
-            'status_kerja' => $m->status_kerja,
-            'tepat_waktu' => $m->tepat_waktu,
-        ])->values();
-
         return view('klasifikasi', [
             'mahasiswa' => $mahasiswa,
             'totalTraining' => $mahasiswa->count(),
             'algoritma' => self::ALGORITMA,
-            'dataset' => $dataset,
         ]);
     }
 
